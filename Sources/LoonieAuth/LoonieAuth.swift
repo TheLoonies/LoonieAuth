@@ -58,4 +58,8 @@ public final class LoonieAuth {
         .upsert([row])
         .execute()
     }
+    // Current user's UUID string (nil if not signed in).
+    public func currentUserID() async -> String? {
+      try? await client.auth.session.user.id.uuidString
+    }
 }
